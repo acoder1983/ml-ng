@@ -18,8 +18,12 @@ for iter = 1:num_iters
     %
 
 
-    theta(1)=theta(1)-alpha * sum((X*theta-y).*X(:,1))/m;
-    theta(2)=theta(2)-alpha * sum((X*theta-y).*X(:,2))/m;
+    theta_i=zeros(length(theta),1);
+    for j = 1:length(theta)
+        theta_i(j)=theta(j)-alpha*(1/m)*sum((X*theta-y).*X(:,j));
+    end
+    theta=theta_i;
+
 
 
 
